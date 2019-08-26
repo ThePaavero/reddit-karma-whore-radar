@@ -6,8 +6,15 @@ const port = 2020
 const invalidCallMessage = 'Username as the first and only URL segment, please'
 
 const getDataOnUser = (username) => {
+  const url = `https://www.reddit.com/user/${username}/about.json`
+
   return new Promise((resolve, reject) => {
-    resolve('ä:D')
+    axios.get(url)
+      .then(response => {
+          resolve(response.data)
+        }
+      )
+      .catch(console.error)
   })
 }
 
@@ -21,7 +28,10 @@ app.get('/:username', (req, res) => {
   }
   getDataOnUser()
     .then(data => {
-      res.json(data)
+      return res.json({
+        success: true,
+        data,
+      })
     })
     .catch(err => {
       res.json({
@@ -30,10 +40,6 @@ app.get('/:username', (req, res) => {
       }, 404)
     })
 
-  return res.json({
-    success: true,
-    data,
-  })
 })
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
