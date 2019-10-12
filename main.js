@@ -18,8 +18,8 @@ const run = async () => {
     // Show the jury the data on these OPs.
     const verdict = Jury.getVerdict(suspectOps)
     verdict.username = username
-    console.log(JSON.stringify(verdict, null, 2))
-    console.log('------------------------------------------------')
+    const sentence = Judge.getSentence(verdict)
+    Judge.markUserAsWhore(sentence)
   })
 }
 
