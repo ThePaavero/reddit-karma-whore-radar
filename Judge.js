@@ -16,7 +16,7 @@ const Judge = () => {
 
       if (postVsCommentDelta < 0) {
         resolve({
-          verdict: 'User has more comment karma than post karma, so probably not as asshole.',
+          verdict: 'User has more comment karma than post karma, so probably not a whore.',
           accountAge,
           accountCreated,
           debugData: evidence,
