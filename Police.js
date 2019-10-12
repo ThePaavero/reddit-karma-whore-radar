@@ -39,7 +39,6 @@ const Police = () => {
     return response.data.data
   }
 
-
   return {
     patrol,
     getUserData
