@@ -13,11 +13,15 @@ const run = async () => {
     const username = post.data.author
 
     // Tell the police to frisk the OP.
-    const suspectOps = await Police.getUserData(username)
+    const userData = await Police.getUserData(username)
 
     // Show the jury the data on these OPs.
-    const verdict = Jury.getVerdict(suspectOps)
+    const verdict = Jury.getVerdict(userData)
+
+    // Add the username. The jury doesn't need to know the username.
     verdict.username = username
+
+    // Get the final verdict from the judge.
     const sentence = Judge.getSentence(verdict)
 
     // If the judge's sentence is "guilty", save the information. Innocent users don't need to be written down.
