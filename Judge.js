@@ -28,7 +28,12 @@ const Judge = () => {
     sentence.courtDate = moment()
     sentence.courtDateHuman = sentence.courtDate.format('DD.MM.YYYY HH:mm')
     registerData.push(sentence)
-    fs.writeFileSync(whoreRegisterPath, JSON.stringify(registerData, null, 2))
+
+    // Remove possible duplicates.
+    const newRegisterData = _.uniqBy(registerData, 'username')
+
+    // Write.
+    fs.writeFileSync(whoreRegisterPath, JSON.stringify(newRegisterData, null, 2))
   }
 
   return {

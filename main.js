@@ -19,7 +19,11 @@ const run = async () => {
     const verdict = Jury.getVerdict(suspectOps)
     verdict.username = username
     const sentence = Judge.getSentence(verdict)
-    Judge.markUserAsWhore(sentence)
+
+    // If the judge's sentence is "guilty", save the information. Innocent users don't need to be written down.
+    if (sentence.verdict === 'GUILTY') {
+      Judge.markUserAsWhore(sentence)
+    }
   })
 }
 
