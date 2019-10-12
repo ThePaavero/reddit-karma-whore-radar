@@ -11,10 +11,9 @@ const run = async () => {
   suspectPosts.forEach(async post => {
     // Tell the police to frisk the OP.
     const suspectOps = await Police.getUserData(post.data.author)
-    console.log(JSON.stringify(suspectOps, null, 2))
-
     // Show the jury the data on these OPs.
-    // const verdicts = Jury.getVerdict(suspectOps)
+    const verdicts = Jury.getVerdict(suspectOps)
+    // console.log(JSON.stringify(verdicts, null, 2))
   })
 }
 
