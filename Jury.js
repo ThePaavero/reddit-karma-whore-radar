@@ -9,6 +9,15 @@ const Jury = () => {
     const postVsCommentDelta = commentKarma - postKarma
     const accountAge = moment(evidence.created, 'X').fromNow()
 
+    // Right from the start, if the user has lots of comment karma, we'll consider him a user who adds value to Reddit.
+    if (commentKarma > 500) {
+      return {
+        verdict: 'INNOCENT',
+        reasonHuman: 'Lots of comment karma',
+        reasonSlug: 'HIGH_COMMENT_KARMA',
+      }
+    }
+
     const redFlags = []
 
     // Comment karma vs. post karma.
@@ -40,6 +49,8 @@ const Jury = () => {
 
     return {
       verdict: 'INNOCENT',
+      reasonHuman: 'Red flags.',
+      reasonSlug: 'RED_FLAGS',
       redFlags,
     }
   }
