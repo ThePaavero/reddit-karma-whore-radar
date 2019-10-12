@@ -4,3 +4,15 @@ Need to go deeper?
 
 
 * Time! How old is the account? Try to draw a sort of timeline and measure hotspots or something.
+    - How would the timeline look if you wrote a bot for harvesting karma?
+
+---
+
+* Grab the top posts from /r/all
+* Iterate their OPs
+* Gather a list of "suspects"
+* Write it down
+* Do this once a day or something, with a manual check
+* Manually "judge" each OP
+* Publish the list somewhere as a static JSON, perhaps?
+* Write an extension that uses this data and marks/removes spammy posts for the user
