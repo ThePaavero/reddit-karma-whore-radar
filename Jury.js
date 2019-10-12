@@ -12,9 +12,9 @@ const Jury = () => {
     const redFlags = []
 
     // Comment karma vs. post karma.
-    if (postVsCommentDelta < 0) {
+    if (postVsCommentDelta < commentKarma * -1) {
       redFlags.push({
-        verdictHuman: 'User has more comment karma than post karma, so probably a whore.',
+        verdictHuman: 'User has much more comment karma than post karma, so probably a whore.',
         verdictSlug: 'BAD_KARMA_BALANCE',
         details: {
           postVsCommentDelta,
@@ -23,14 +23,14 @@ const Jury = () => {
     }
 
     // Lots of post karma and a new user?
-    if (postKarma > 10000 && !accountAge.includes('years') && !accountAge.includes('months')) {
+    if (postKarma > 50000 && !accountAge.includes('years') && !accountAge.includes('months')) {
       redFlags.push({
         verdictHuman: 'User has lots of post karma and is a fairly new user.',
         verdictSlug: 'NEW_USER_HIGH_POST_KARMA',
       })
     }
 
-    // For now, any red flag will mean user is a whore. A pretty nasty jury!
+    // Red flags?
     if (redFlags.length > 0) {
       return {
         verdict: 'GUILTY',
@@ -40,6 +40,7 @@ const Jury = () => {
 
     return {
       verdict: 'INNOCENT',
+      redFlags,
     }
   }
 
